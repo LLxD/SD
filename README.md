@@ -1,5 +1,26 @@
 Documentação para a disciplina de Sistemas Distribuídos da Universidade Federal de Uberlândia (UFU).
 
+- [Tipos de sistemas distribuídos](#tipos-de-sistemas-distribuídos)
+- [Características de sistemas distribuídos](#características-de-sistemas-distribuídos)
+- [Clusters](#clusters)
+  - [Componentes de um cluster](#componentes-de-um-cluster)
+  - [Grid Computing](#grid-computing)
+- [Comunicação](#comunicação)
+  - [Redes](#redes)
+    - [Topologias](#topologias)
+  - [OSI (Open System Interconnection)](#osi-open-system-interconnection)
+    - [Camada 7 - Aplicação](#camada-7---aplicação)
+    - [Camada 6 - Apresentação](#camada-6---apresentação)
+    - [Camada 5 - Sessão](#camada-5---sessão)
+    - [Camada 4 - Transporte](#camada-4---transporte)
+    - [Camada 3 - Rede](#camada-3---rede)
+    - [Camada 2 - Enlace](#camada-2---enlace)
+    - [Camada 1 - Física](#camada-1---física)
+- [Websockets](#websockets)
+  - [Comparação entre HTTP e WebSocket](#comparação-entre-http-e-websocket)
+  - [Co-rotinas](#co-rotinas)
+  - [Exemplo em Python](#exemplo-em-python)
+
 ## Tipos de sistemas distribuídos
 
 - Sistemas de Computação Distribuída de Alto Desempenho (HPC)
@@ -82,3 +103,64 @@ Documentação para a disciplina de Sistemas Distribuídos da Universidade Feder
 #### Camada 1 - Física
 
 - É responsável por transmitir os bits entre os dispositivos de rede.
+
+## Websockets
+
+- É um protocolo de comunicação que permite a comunicação bidirecional entre um cliente e um servidor. É baseado em TCP, que é um protocolo de comunicação orientado a conexão. O protocolo WebSocket foi desenvolvido para substituir o protocolo HTTP, que é um protocolo de comunicação não orientado a conexão.
+
+### Comparação entre HTTP e WebSocket
+
+| HTTP | WebSocket |
+| --- | --- |
+| Comunicação unidirecional | Comunicação bidirecional |
+| Comunicação síncrona | Comunicação assíncrona |
+| Comunicação baseada em requisição e resposta | Comunicação baseada em eventos |
+
+### Co-rotinas
+
+- São funções que podem ser pausadas e retomadas a qualquer momento. São utilizadas para programação assíncrona.
+
+### Exemplo em Python
+
+Servidor:
+
+  ```python
+  import asyncio
+  import websockets
+
+  async def hello(websocket, path):
+      name = await websocket.recv()
+      print(f"< {name}")
+
+      greeting = f"Hello {name}!"
+
+      await websocket.send(greeting)
+      print(f"> {greeting}")
+
+  start_server = websockets.serve(hello, "localhost", 8765)
+
+  asyncio.get_event_loop().run_until_complete(start_server)
+
+  asyncio.get_event_loop().run_forever()
+  ```
+
+Cliente:
+
+  ```python
+  import asyncio
+  import websockets
+
+  async def hello():
+      uri = "ws://localhost:8765"
+      async with websockets.connect(uri) as websocket:
+          name = input("What's your name? ")
+
+          await websocket.send(name)
+          print(f"> {name}")
+
+          greeting = await websocket.recv()
+          print(f"< {greeting}")
+
+  asyncio.get_event_loop().run_until_complete(hello())
+  ```
+
