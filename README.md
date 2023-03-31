@@ -20,6 +20,8 @@ Documentação para a disciplina de Sistemas Distribuídos da Universidade Feder
   - [Comparação entre HTTP e WebSocket](#comparação-entre-http-e-websocket)
   - [Co-rotinas](#co-rotinas)
   - [Exemplo em Python](#exemplo-em-python)
+  - [RPC](#rpc)
+    - [Proto](#proto)
 
 ## Tipos de sistemas distribuídos
 
@@ -164,3 +166,12 @@ Cliente:
   asyncio.get_event_loop().run_until_complete(hello())
   ```
 
+### RPC
+
+- É um protocolo de comunicação que permite a comunicação entre processos em diferentes máquinas. É baseado em requisições e respostas. O cliente envia uma requisição para o servidor, que executa a tarefa e retorna uma resposta para o cliente.
+
+- Abre a possibilidade de executar tarefas em diferentes máquinas, de forma transparente para o cliente.
+
+#### Proto
+
+- É um framework RPC para Python. É baseado em protocol buffers, que é um formato de serialização de dados. O Proto é baseado em co-rotinas, que permite a comunicação assíncrona.
