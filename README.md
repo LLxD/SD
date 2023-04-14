@@ -22,6 +22,12 @@ Documentação para a disciplina de Sistemas Distribuídos da Universidade Feder
   - [Exemplo em Python](#exemplo-em-python)
   - [RPC](#rpc)
     - [Proto](#proto)
+- [Modelos computacionais](#modelos-computacionais)
+  - [Comunicação](#comunicação-1)
+  - [Processos - Definição](#processos---definição)
+  - [Recursos computacionais](#recursos-computacionais)
+  - [Threads](#threads)
+  - [Multithreading](#multithreading)
 
 ## Tipos de sistemas distribuídos
 
@@ -175,3 +181,44 @@ Cliente:
 #### Proto
 
 - É um framework RPC para Python. É baseado em protocol buffers, que é um formato de serialização de dados. O Proto é baseado em co-rotinas, que permite a comunicação assíncrona.
+
+
+## Modelos computacionais
+
+### Comunicação
+
+- É a troca de informações entre dois ou mais processos, que podem estar em diferentes computadores. A comunicação pode ser síncrona ou assíncrona.
+- Os SDs têm a disposição processadores que permitem o desenvolvimento de aplicações paralelas
+- Multiprocessamento é importante para o desenvolvimento de aplicações paralelas
+- A Memória Compartilhada Distribuída (MCD) é um recurso importante para o desenvolvimento de aplicações paralelas
+![MCD](https://media.geeksforgeeks.org/wp-content/uploads/20210903190914/Screenshot767-660x394.png)
+
+### Processos - Definição
+
+- O conceito de processo é definido como um programa de execução
+- Concorrência x Paralelismo
+  - Concorrência: vários processos são executados simultaneamente, mas não necessariamente em paralelo
+    - Mais de um processo pode ser executado no mesmo núcleo de processamento.
+  - Paralelismo: vários processos são executados simultaneamente e em paralelo
+    - É necessário que os processos sejam executados em diferentes núcleos de processamento
+![Concorrência x Paralelismo](https://jrblog.com.br/wp-content/uploads/2022/06/Concorrencia_Paralalismo.jpg)
+
+- Classificação dos processos
+  - CPU Bound x I/O Bound
+    - CPU Bound: processos que utilizam mais a CPU para executar suas tarefas
+    - I/O Bound: processos que utilizam mais a entrada e saída para executar suas tarefas
+
+
+### Recursos computacionais
+
+- Threads
+- Multithreading
+
+
+### Threads
+
+- Threads são processos leves, que são executados dentro de um processo
+
+### Multithreading
+
+- É a execução de múltiplas threads em um mesmo processo
