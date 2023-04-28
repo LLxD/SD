@@ -28,6 +28,7 @@ Documentação para a disciplina de Sistemas Distribuídos da Universidade Feder
   - [Recursos computacionais](#recursos-computacionais)
   - [Threads](#threads)
   - [Multithreading](#multithreading)
+  - [Multiprocessing](#multiprocessing)
 
 ## Tipos de sistemas distribuídos
 
@@ -213,6 +214,7 @@ Cliente:
 
 - Threads
 - Multithreading
+- Multiprocessing
 
 
 ### Threads
@@ -222,3 +224,15 @@ Cliente:
 ### Multithreading
 
 - É a execução de múltiplas threads em um mesmo processo
+  - Vantagens
+    - Melhor utilização da CPU
+    - Melhor utilização da memória
+    - Melhor utilização dos recursos computacionais
+
+### Multiprocessing
+
+- É a execução de múltiplos processos em um mesmo computador
+  - Vantagens
+    - Realizar tarefas em um período de tempo menor
+    - Velocidade alta de processamento
+    - Se um processo falhar, os outros processos continuam funcionando
