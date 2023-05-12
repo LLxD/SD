@@ -29,6 +29,10 @@ Documentação para a disciplina de Sistemas Distribuídos da Universidade Feder
   - [Threads](#threads)
   - [Multithreading](#multithreading)
   - [Multiprocessing](#multiprocessing)
+- [Mensageria com Kafka](#mensageria-com-kafka)
+  - [Quando usar e não usar](#quando-usar-e-não-usar)
+  - [Arquitetura](#arquitetura)
+  - [Exemplo em Python](#exemplo-em-python-1)
 
 ## Tipos de sistemas distribuídos
 
@@ -236,3 +240,44 @@ Cliente:
     - Realizar tarefas em um período de tempo menor
     - Velocidade alta de processamento
     - Se um processo falhar, os outros processos continuam funcionando
+
+## Mensageria com Kafka
+
+- Kafka é uma plataforma de streaming de dados distribuída, que permite a publicação e assinatura de mensagens. É baseado em tópicos, que são fluxos de dados. Os tópicos são divididos em partições, que são os fluxos de dados. As partições são divididas em segmentos, que são os dados. Os segmentos são divididos em mensagens, que são os dados. As mensagens são divididas em registros, que são os dados.
+
+### Quando usar e não usar
+
+- Usar
+  - Quando a aplicação precisa de um sistema de mensageria
+  - Quando a aplicação precisa de um sistema de streaming de dados
+  - Quando a aplicação precisa de um sistema de processamento de dados em tempo real
+  - Quando a aplicação precisa de um sistema de processamento de dados em lote
+  - Quando a aplicação precisa de um sistema de processamento de dados em tempo real e em lote
+
+- Não usar
+  - Quando a aplicação não precisa de um sistema de mensageria
+  - Quando a aplicação não precisa de um sistema de streaming de dados
+  - Quando a aplicação não precisa de um sistema de processamento de dados em tempo real
+  - Quando a aplicação não precisa de um sistema de processamento de dados em lote
+  - Quando a aplicação não precisa de um sistema de processamento de dados em tempo real e em lote
+
+### Arquitetura
+
+- Kafka é baseado em tópicos, que são fluxos de dados. Os tópicos são divididos em partições, que são os fluxos de dados. As partições são divididas em segmentos, que são os dados. Os segmentos são divididos em mensagens, que são os dados. As mensagens são divididas em registros, que são os dados.
+
+![Arquitetura](https://i0.wp.com/www.cienciaedados.com/wp-content/uploads/2016/04/Apache-Kafka.jpg?resize=638%2C479&ssl=1)
+
+### Exemplo em Python
+
+```python
+from kafka import KafkaProducer
+from kafka import KafkaConsumer
+
+producer = KafkaProducer(bootstrap_servers='localhost:9092')
+producer.send('meu-topico', b'Hello, World!')
+
+consumer = KafkaConsumer('meu-topico', bootstrap_servers='localhost:9092')
+for msg in consumer:
+    print (msg)
+```
+
